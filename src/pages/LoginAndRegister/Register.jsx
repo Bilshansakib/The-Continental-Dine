@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =
@@ -15,10 +17,24 @@ const Register = () => {
     const password = form.password.value;
 
     console.log({ email, password, name, photo });
-    createUser(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Signup Successful");
+        if (user) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Welcome To Our Restaurant",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        toast.error(error?.message);
+      });
   };
   return (
     <header className="bg-gray-900 pattern">
