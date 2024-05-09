@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 const Login = () => {
   const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
 
@@ -24,13 +24,7 @@ const Login = () => {
           .post("http://localhost:9000/jwt", user, { withCredentials: true })
           .then((res) => {
             console.log(res.data);
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+            toast.success("LogIn Successful");
           });
       })
       .catch((error) => console.log(error));
