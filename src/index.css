@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clr {
+  color: rgb(255, 18, 18);
+}
