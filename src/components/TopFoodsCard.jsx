@@ -13,6 +13,7 @@ const TopFoodsCard = ({ food }) => {
     quantity,
     bid_count,
   } = food || {};
+  console.log(quantity);
 
   return (
     // <div className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all">
@@ -31,11 +32,11 @@ const TopFoodsCard = ({ food }) => {
     // </div>
     <Link
       to={`/food/${_id}`}
-      className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all"
+      className="w-full   h-96 max-w-sm  px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.15] transition-all"
     >
-      <div className="flex items-center justify-between">
+      {/* <div className=" flex items-center justify-between">
         <span className="text-xs font-light text-gray-800 ">
-          {/* Deadline: {new Date(deadline).toLocaleDateString()} */}
+          
         </span>
         <span className="px-3 py-1 text-[8px] text-blue-800 uppercase bg-blue-200 rounded-full ">
           {food_category}
@@ -52,6 +53,29 @@ const TopFoodsCard = ({ food }) => {
         </p>
         <p className="mt-2 text-sm font-bold text-gray-600 ">Range: ${price}</p>
         <p className="mt-2 text-sm font-bold text-gray-600 ">Bid Count:</p>
+      </div> */}
+      <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
+        <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"></div>
+
+        <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+          <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">
+            {food_name}
+          </h3>
+
+          <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+            <span className="font-bold text-gray-800 dark:text-gray-200">
+              {price}
+            </span>
+            <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">
+              Add to cart
+            </button>
+          </div>
+          <div>
+            <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">
+              bid:
+            </button>
+          </div>
+        </div>
       </div>
     </Link>
   );
