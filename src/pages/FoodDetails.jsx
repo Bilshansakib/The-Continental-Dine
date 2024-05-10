@@ -18,7 +18,7 @@ const FoodDetails = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
-          view card details:
+          view Food details:
         </h1>
 
         <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
@@ -44,6 +44,7 @@ const FoodDetails = () => {
             </a>
 
             <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+              <h1>Short descriotion : </h1>
               {description}
             </p>
 
