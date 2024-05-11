@@ -18,7 +18,6 @@ const FoodDetails = () => {
     quantity,
     bid_count,
   } = food || {};
-  console.log(food);
   return (
     <section className="bg-white font-fah dark:bg-gray-900">
       <div className="container px-6 py-10 mx-auto">
@@ -29,7 +28,7 @@ const FoodDetails = () => {
         <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
           <img
             className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
-            src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            src={food_image}
             alt=""
           />
 
@@ -49,12 +48,12 @@ const FoodDetails = () => {
             >
               {food_name}
             </a>
-            <div className="flex gap-2">
+            <div className="flex items-center justify-around gap-2">
               <p
                 href="#"
-                className="inline-block mt-2 text-blue-500 underline hover:text-blue-400"
+                className="inline-block mt-2 text-blue-500 text-2xl hover:text-blue-400"
               >
-                {price}
+                Price : {`$ ${price}`}
               </p>
               <Link to={`/purchase/${_id}`}>
                 <Button variant="contained" color="success">

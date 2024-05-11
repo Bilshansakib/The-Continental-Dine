@@ -8,6 +8,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const PurchaseFood = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -36,7 +37,15 @@ const PurchaseFood = () => {
     const foodId = _id;
 
     const quantityLeft = parseFloat(quantity);
-    if (quantityLeft < 1) return toast.error("Not Available");
+    if (quantityLeft < 1)
+      // return toast.error(`Quantity ${quantity}, Not Available"`);
+      return Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: `Quantity left: ${quantity}, Not Available Now`,
+        showConfirmButton: false,
+        timer: 2000,
+      });
 
     const purchaseData = {
       price,

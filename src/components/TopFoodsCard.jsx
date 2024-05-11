@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 const TopFoodsCard = ({ food }) => {
   const {
     _id,
+    food_title,
     food_image,
     food_name,
     description,
@@ -57,6 +58,8 @@ const TopFoodsCard = ({ food }) => {
         <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
           <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">
             {food_name}
+
+            <span>{food_title}</span>
           </h3>
 
           <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
