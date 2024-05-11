@@ -5,7 +5,12 @@ import { Button } from "@mui/material";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+
 const PurchaseFood = () => {
+  const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth();
   const food = useLoaderData();
   const {
@@ -22,13 +27,16 @@ const PurchaseFood = () => {
   } = food || {};
   const currentDate = new Date().toLocaleDateString();
   const handleFormSubmit = async (e) => {
+    // if (user?.email === buyer_email)
     e.preventDefault();
     const form = e.target;
     const price = parseFloat(form.price.value);
     const buyer = user?.displayname;
     const email = user?.email;
     const foodId = _id;
-    const quantityLeft = quantity;
+
+    const quantityLeft = parseFloat(quantity);
+    if (quantityLeft < 1) return toast.error("Not Available");
 
     const purchaseData = {
       price,
@@ -139,10 +147,16 @@ const PurchaseFood = () => {
             <div className="flex flex-col gap-2 ">
               <label className="text-gray-700">Purchase date :</label>
 
-              <input
+              {/* <input
                 type="type"
                 className="block w-full px-4 py-2  text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 defaultValue={currentDate}
+              /> */}
+              <DatePicker
+                dateFormat="Pp"
+                className="border p-2 rounded-md"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
               />
             </div>
           </div>
@@ -153,6 +167,7 @@ const PurchaseFood = () => {
               className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               variant="contained"
               color="success"
+              //   disabled
             >
               Purchase Now
             </Button>

@@ -12,6 +12,7 @@ const Home = () => {
           <button className="btn ">See All</button>
         </div>
       </Link>
+      <h2>top chefs</h2>
     </div>
   );
 };

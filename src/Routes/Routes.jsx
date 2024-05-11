@@ -6,10 +6,13 @@ import Register from "../pages/LoginAndRegister/Register";
 import AllFoods from "../pages/AllFoods";
 import FoodDetails from "../pages/FoodDetails";
 import PurchaseFood from "../pages/PurchaseFood";
+import AddFoodItems from "../pages/AddFoodItems";
+import ErrorPage from "../pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
         element: <PurchaseFood></PurchaseFood>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/purchase/${params.id}`),
+      },
+      {
+        path: "/add-food-items",
+        element: <AddFoodItems></AddFoodItems>,
       },
       {
         path: "/login",
