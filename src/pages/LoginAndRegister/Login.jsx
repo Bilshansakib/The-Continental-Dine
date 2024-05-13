@@ -4,11 +4,12 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import SocialMediaLogin from "../../components/SocialMediaLogin";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
+  const { signIn, user, loading } = useContext(AuthContext);
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -33,7 +34,9 @@ const Login = () => {
         //get access token
         navigate(from, { replace: true });
         axios
-          .post("http://localhost:9000/jwt", user, { withCredentials: true })
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, user, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
             toast.success("LogIn Successful");
@@ -81,9 +84,10 @@ const Login = () => {
             </h3>
 
             <p className="mt-4 text-gray-100">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam,
-              eum modi incidunt adipisci quod porro et non exercitationem quasi,
-              maxime culpa ut nemo ab delectus saepe iste nostrum explicabo a?
+              Competently grow high-payoff best practices for state of the art
+              supply chains. Competently aggregate goal-oriented partnerships
+              vis-a-vis covalent channels. Continually redefine cost effective
+              results whereas.
             </p>
           </div>
 
@@ -111,7 +115,7 @@ const Login = () => {
                       aria-label="Password"
                     />
                   </div>
-
+                  <SocialMediaLogin></SocialMediaLogin>
                   <div className="flex items-center justify-between mt-4">
                     <a
                       href="#"

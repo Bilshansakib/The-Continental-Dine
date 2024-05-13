@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import SocialMediaLogin from "../../components/SocialMediaLogin";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -93,7 +94,7 @@ const Register = () => {
                       name="password"
                     />
                   </div>
-
+                  <SocialMediaLogin></SocialMediaLogin>
                   <div className="flex items-center justify-between mt-4">
                     <a
                       href="#"

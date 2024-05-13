@@ -2,6 +2,8 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
 import axios from "axios";
+import EditNoteTwoToneIcon from "@mui/icons-material/EditNoteTwoTone";
+import { Link } from "react-router-dom";
 
 const MyPurchase = () => {
   const { user } = useAuth();
@@ -15,14 +17,15 @@ const MyPurchase = () => {
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}/my-purchase/${user?.email}`
     );
+
     setPurchase(data);
   };
   console.log(purchase);
   return (
-    <div className=" mx-auto">
+    <div className=" mx-auto ">
       {purchase.map((p, index) => (
         <div key={p._id} className="dark:bg-gray-100 dark:text-gray-900">
-          <div className="container grid grid-cols-12 mx-auto dark:bg-gray-50">
+          <div className="container py-4 grid grid-cols-12 mx-auto dark:bg-gray-50">
             <div
               className="bg-no-repeat ml-20 rounded-full bg-cover dark:bg-gray-300 col-span-full lg:col-span-4"
               style={{
@@ -31,7 +34,11 @@ const MyPurchase = () => {
                 backgroundImage: `url('https://source.unsplash.com/random/640x480')`,
               }}
             >
-              update
+              <Link to={`/update/${p._id}`}>
+                <span>
+                  <EditNoteTwoToneIcon></EditNoteTwoToneIcon> update
+                </span>
+              </Link>
             </div>
             <div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
               <div className="flex justify-start">

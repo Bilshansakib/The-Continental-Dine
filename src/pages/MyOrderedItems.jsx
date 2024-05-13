@@ -10,13 +10,14 @@ const MyOrderedItems = () => {
   useEffect(() => {
     getFoodItems();
   }, [user]);
+
   const getFoodItems = async () => {
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}/foods/${user?.email}`
     );
     setFoods(data);
   };
-
+  console.log(foods);
   return (
     <div className="container mx-auto">
       <CollapsibleTable

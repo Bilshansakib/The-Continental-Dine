@@ -11,6 +11,7 @@ import ErrorPage from "../pages/ErrorPage";
 import MyOrderedItems from "../pages/MyOrderedItems";
 import PrivateRoute from "./PrivateRoute";
 import MyPurchase from "../pages/MyPurchase";
+import Update from "../pages/Update";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,13 +45,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: (
-          <PrivateRoute>
-            <PurchaseFood></PurchaseFood>
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/purchase/${params.id}`),
+        element: <Update></Update>,
+        // loader: ({ params }) =>
+        //   fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`),
       },
       {
         path: "/my-purchase-food-items",
