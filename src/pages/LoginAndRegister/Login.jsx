@@ -1,17 +1,28 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 const Login = () => {
-  const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+  const from = location.state || "/";
+
+  // signIn
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const name = form.name.value;
-    const photo = form.photo.value;
+    // const photo = form.photo.value;
     const password = form.password.value;
 
     signIn(email, password)
@@ -20,6 +31,7 @@ const Login = () => {
         console.log(loggedUser);
         const user = { email };
         //get access token
+        navigate(from, { replace: true });
         axios
           .post("http://localhost:9000/jwt", user, { withCredentials: true })
           .then((res) => {
@@ -29,6 +41,7 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
+  if (user || loading) return;
   return (
     <header className="bg-gray-900 pattern">
       <div className="container px-6 mx-auto">
@@ -86,12 +99,14 @@ const Login = () => {
                     <input
                       className="block w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
                       type="email"
+                      name="email"
                       placeholder="Email address"
                       aria-label="Email address"
                     />
                     <input
                       className="block w-full px-4 py-2 mt-4 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
                       type="password"
+                      name="password"
                       placeholder="Password"
                       aria-label="Password"
                     />

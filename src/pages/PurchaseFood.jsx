@@ -24,18 +24,24 @@ const PurchaseFood = () => {
     food_origin,
     food_category,
     quantity,
-    bid_count,
+    order_count,
+    buyer,
   } = food || {};
   const currentDate = new Date().toLocaleDateString();
   const handleFormSubmit = async (e) => {
     // if (user?.email === buyer_email)
     e.preventDefault();
     const form = e.target;
-    const price = parseFloat(form.price.value);
-    const buyer = user?.displayname;
+    // const price = parseFloat(form.price.value);
+    const price = form.price.value;
+    // const buyerName = form.buyerName.value;
+    // const buyer = user?.displayName;
     const email = user?.email;
     const foodId = _id;
-
+    const foodImage = food_image;
+    const FoodDescription = description;
+    const foodName = food_name;
+    const foodOrigin = food_origin;
     const quantityLeft = parseFloat(quantity);
     if (quantityLeft < 1)
       // return toast.error(`Quantity ${quantity}, Not Available"`);
@@ -48,11 +54,19 @@ const PurchaseFood = () => {
       });
 
     const purchaseData = {
+      foodImage,
       price,
       email,
+      currentDate,
       foodId,
-      buyer,
+      // buyer,
       quantityLeft,
+      foodName,
+      FoodDescription,
+      foodOrigin,
+
+      // buyerName,
+      // buyer_email: user?.email,
     };
     console.table(purchaseData);
 
@@ -147,9 +161,10 @@ const PurchaseFood = () => {
                 Buyer Name :
               </label>
               <input
-                id="buyer"
-                name="buyer"
+                id="buyerName"
+                name="buyerName"
                 type="text"
+                defaultValue={user.displayName}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               />
             </div>
@@ -173,10 +188,9 @@ const PurchaseFood = () => {
           <div className=" mt-6">
             <Button
               type="submit"
-              className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+              className={` px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600`}
               variant="contained"
               color="success"
-              //   disabled
             >
               Purchase Now
             </Button>

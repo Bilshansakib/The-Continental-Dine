@@ -8,6 +8,9 @@ import FoodDetails from "../pages/FoodDetails";
 import PurchaseFood from "../pages/PurchaseFood";
 import AddFoodItems from "../pages/AddFoodItems";
 import ErrorPage from "../pages/ErrorPage";
+import MyOrderedItems from "../pages/MyOrderedItems";
+import PrivateRoute from "./PrivateRoute";
+import MyPurchase from "../pages/MyPurchase";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,13 +34,47 @@ const router = createBrowserRouter([
       },
       {
         path: "/purchase/:id",
-        element: <PurchaseFood></PurchaseFood>,
+        element: (
+          <PrivateRoute>
+            <PurchaseFood></PurchaseFood>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/purchase/${params.id}`),
       },
       {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <PurchaseFood></PurchaseFood>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/purchase/${params.id}`),
+      },
+      {
+        path: "/my-purchase-food-items",
+        element: (
+          <PrivateRoute>
+            <MyPurchase></MyPurchase>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/add-food-items",
-        element: <AddFoodItems></AddFoodItems>,
+        element: (
+          <PrivateRoute>
+            <AddFoodItems></AddFoodItems>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-added-items",
+        element: (
+          <PrivateRoute>
+            <MyOrderedItems></MyOrderedItems>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 const FoodDetails = () => {
   const { user } = useAuth();
-  console.log(user.email);
   const food = useLoaderData();
   const {
     _id,
@@ -79,7 +78,7 @@ const FoodDetails = () => {
 
               <div className="mx-4">
                 <h1 className="text-sm text-gray-700 dark:text-gray-200">
-                  {user.email}
+                  {user?.email}
                 </h1>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   {user?.displayName || "unknown"}

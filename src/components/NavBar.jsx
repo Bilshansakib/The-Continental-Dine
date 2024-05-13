@@ -50,15 +50,18 @@ const NavBar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to="/my-added-food-items" className="justify-between">
-                    My added Food Items
+                  <Link
+                    to="/my-purchase-food-items"
+                    className="justify-between"
+                  >
+                    My Purchase Food Items
                   </Link>
                 </li>
                 <li>
                   <Link to="/add-food-items">Add Food Items</Link>
                 </li>
                 <li>
-                  <Link to="/my-order-list">My Order List</Link>
+                  <Link to="/my-added-items">My Added Items</Link>
                 </li>
 
                 <li className="mt-2">

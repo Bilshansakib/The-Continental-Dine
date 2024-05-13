@@ -52,7 +52,7 @@ const AddFoodItems = () => {
       );
       console.log(data);
       toast.success("Food Item Updated Successfully!");
-      // navigate('/my-posted-jobs')
+      navigate("/my-added-items");
     } catch (err) {
       console.log(err);
     }

@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =
     useContext(AuthContext);
-
+  const from = location.state || "/";
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,7 +23,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Signup Successful");
+        // toast.success("Signup Successful");
         if (user) {
           Swal.fire({
             position: "top-end",
@@ -31,6 +33,7 @@ const Register = () => {
             timer: 1500,
           });
         }
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error?.message);
