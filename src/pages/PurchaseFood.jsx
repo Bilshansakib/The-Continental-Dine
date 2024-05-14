@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const PurchaseFood = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -197,6 +198,9 @@ const PurchaseFood = () => {
           </div>
         </form>
       </section>
+      <Helmet>
+        <title>Continental Dine | Purchase </title>
+      </Helmet>
     </div>
   );
 };

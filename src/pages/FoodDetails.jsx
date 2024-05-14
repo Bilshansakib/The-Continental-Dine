@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const FoodDetails = () => {
   const { user } = useAuth();
   const food = useLoaderData();
@@ -88,6 +89,9 @@ const FoodDetails = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Continental Dine | Food Details </title>
+      </Helmet>
     </section>
   );
 };

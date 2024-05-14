@@ -4,11 +4,12 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialMediaLogin from "../../components/SocialMediaLogin";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =
+  const { createUser, updateUserProfile, user, setUser } =
     useContext(AuthContext);
   const from = location.state || "/";
   const handleRegister = (e) => {
@@ -41,7 +42,12 @@ const Register = () => {
       });
   };
   return (
-    <header className="bg-gray-900 pattern">
+    <header
+      style={{
+        "background-image": "url(/src/assets/Image/swiper3.jpg)",
+      }}
+      className="bg-gray-900 pattern"
+    >
       <div className="container px-6 mx-auto">
         <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
           <div className="lg:w-1/2">
@@ -76,7 +82,7 @@ const Register = () => {
                       placeholder="Name"
                     />
                     <input
-                      className="block w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
+                      className="block mt-4 w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
                       type="text"
                       name="photo"
                       placeholder="Photo URL"
@@ -119,6 +125,9 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Continental Dine | Registration </title>
+      </Helmet>
     </header>
   );
 };

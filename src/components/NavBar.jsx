@@ -7,15 +7,21 @@ const NavBar = () => {
 
   return (
     <>
-      <div className={` bg-orange-300 navbar shadow-sm container px-4 mx-auto`}>
+      <div
+        className={`lg:h-22 bg-gradient-to-r from-red-200 to-white navbar shadow-sm container px-4 mx-auto`}
+      >
         <div className="flex-1">
           <Link to="/" className="flex gap-2 items-center">
             {/* <img className='w-auto h-7' src={} alt='logo' /> */}
-            <span className="font-bold font-fah text-3xl">Lixa</span>
+            <span className="drop-shadow-lg p-2 bg-gradient-to-r from-white to-red-800 font-bold text-3xl text-white">
+              <span className="px-2 bg-gradient-to-r font-rob from-yellow-400 to-white-500">
+                The Continental
+              </span>
+            </span>
           </Link>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal font-bold tex px-1 text-lg">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -47,7 +53,8 @@ const NavBar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100
+                bg-gradient-to-r from-yellow-200 to-red-800 rounded-box w-52 font-semibold"
               >
                 <li>
                   <Link

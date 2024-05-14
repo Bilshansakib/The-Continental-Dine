@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 const CollapsibleTable = ({ foods, getFoodItems }) => {
@@ -151,6 +152,9 @@ const CollapsibleTable = ({ foods, getFoodItems }) => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Continental Dine | My Food </title>
+      </Helmet>
     </section>
   );
 };

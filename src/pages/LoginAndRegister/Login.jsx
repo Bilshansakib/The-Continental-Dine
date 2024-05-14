@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import SocialMediaLogin from "../../components/SocialMediaLogin";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,7 +47,12 @@ const Login = () => {
   };
   if (user || loading) return;
   return (
-    <header className="bg-gray-900 pattern">
+    <header
+      style={{
+        "background-image": "url(/src/assets/Image/swiper3.jpg)",
+      }}
+      className="container bg-cover mx-auto bg-gray-900 pattern"
+    >
       <div className="container px-6 mx-auto">
         {/* <nav className="flex flex-col py-6 sm:flex-row sm:justify-between sm:items-center">
           <a href="#">
@@ -76,7 +82,7 @@ const Login = () => {
         <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-semibold text-gray-100 lg:text-4xl">
-              Brand
+              The Continental Dine
             </h2>
 
             <h3 className="mt-2 text-2xl font-semibold text-gray-100">
@@ -143,6 +149,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Continental Dine | Login </title>
+      </Helmet>
     </header>
   );
 };

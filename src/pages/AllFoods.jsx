@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DisplaySettingsOutlinedIcon from "@mui/icons-material/DisplaySettingsOutlined";
+import { Helmet } from "react-helmet-async";
 const AllFoods = () => {
   const { user } = useAuth();
   const [allFoods, setAllFoods] = useState([]);
@@ -32,6 +33,9 @@ const AllFoods = () => {
 
   return (
     <div className="mx-auto container">
+      <Helmet>
+        <title>Continental Dine | All Food </title>
+      </Helmet>
       <Page_Title></Page_Title>
       <form>
         <div className=" flex justify-end my-12">
@@ -43,7 +47,7 @@ const AllFoods = () => {
               className="grow"
               placeholder="Search"
             />
-            <button type="submit" className="badge badge-info">
+            <button type="submit" className="badge bg-orange-400 ">
               Optional
             </button>
           </label>

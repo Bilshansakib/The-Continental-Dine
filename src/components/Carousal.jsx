@@ -46,8 +46,8 @@ const Carousal = () => {
           alt=""
         /> */}
         <SwiperSlide className="space-y-4">
-          <div className="title" data-swiper-parallax="-300">
-            The Continental
+          <div className="text-6xl" data-swiper-parallax="-300">
+            The Continental Food
           </div>
 
           <div className="subtitle" data-swiper-parallax="-200">
