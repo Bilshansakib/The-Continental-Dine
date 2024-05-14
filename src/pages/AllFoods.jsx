@@ -1,29 +1,83 @@
-import image1 from "../assets/Image/image1.jpg";
-
+import { useState } from "react";
+import Page_Title from "../components/Page_Title";
+import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 const AllFoods = () => {
+  const { user } = useAuth();
+  const [allFoods, setAllFoods] = useState([]);
+
+  useEffect(() => {
+    getFoodItems();
+  }, [user]);
+
+  const getFoodItems = async () => {
+    const { data } = await axios(`${import.meta.env.VITE_API_URL}/foods`);
+
+    setAllFoods(data);
+  };
+  console.log(allFoods);
   return (
-    <div
-      className={`container mx-auto bg-center relative photo1 overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center`}
-      //   style="background-image: url('/src/assets/Image/image1.jpg')"
-    >
-      <div
-        className="absolute bgStyle bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
-        // style="background-color: rgba(0, 0, 0, 0.6)"
-      >
-        <div className="flex h-full items-center justify-center">
-          <div className="text-white">
-            <h2 className="mb-4 text-4xl font-semibold">All Food Items</h2>
-            <h4 className="mb-6 text-xl font-semibold">Subheading</h4>
-            <button
-              type="button"
-              className="rounded border-2 border-neutral-50 px-7 pb-[8px] pt-[10px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-              data-twe-ripple-init
-              data-twe-ripple-color="light"
-            >
-              Call to action
-            </button>
+    <div className="mx-auto container">
+      <Page_Title></Page_Title>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+        {allFoods.map((food) => (
+          <div
+            key={food._id}
+            className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800"
+          >
+            <div className="flex justify-center -mt-16 md:justify-end">
+              <img
+                className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
+                alt="Testimonial avatar"
+                src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
+              />
+            </div>
+
+            <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
+              {food.food_name}
+            </h2>
+
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
+              Category: {food.food_category}
+            </p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
+              Price: {food.price}
+            </p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
+              Quantity: {food.quantity}
+            </p>
+            {!user && (
+              <Link to="/login">
+                <div className="flex justify-end mt-4">
+                  <a
+                    href="#"
+                    className="text-lg font-medium text-blue-600 dark:text-blue-300"
+                    tabindex="0"
+                    role="link"
+                  >
+                    View Details
+                  </a>
+                </div>
+              </Link>
+            )}
+            {user && (
+              <Link to={`/food/${food._id}`}>
+                <div className="flex justify-end mt-4">
+                  <a
+                    href="#"
+                    className="text-lg font-medium text-blue-600 dark:text-blue-300"
+                    tabindex="0"
+                    role="link"
+                  >
+                    View Details
+                  </a>
+                </div>
+              </Link>
+            )}
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -52,7 +52,7 @@ const FoodDetails = () => {
                 href="#"
                 className="inline-block mt-2 text-blue-500 text-2xl hover:text-blue-400"
               >
-                Price : {`$ ${price}`}
+                Price : {`${price}`}
               </p>
               <Link to={`/purchase/${_id}`}>
                 <Button variant="contained" color="success">
