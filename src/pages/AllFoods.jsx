@@ -30,7 +30,6 @@ const AllFoods = () => {
   // };
   console.log(allFoods);
 
-  const handleSearch = (e) => {};
   return (
     <div className="mx-auto container">
       <Page_Title></Page_Title>

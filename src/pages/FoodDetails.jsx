@@ -15,7 +15,7 @@ const FoodDetails = () => {
     food_origin,
     food_category,
     quantity,
-    bid_count,
+    purchase_count,
   } = food || {};
   return (
     <section className="bg-white font-fah dark:bg-gray-900">
@@ -32,7 +32,7 @@ const FoodDetails = () => {
           />
 
           <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-            <div className="space-y-2">
+            <div className="space-y-4">
               <p className="text-sm underline text-blue-500 uppercase">
                 Category : {food_category}
               </p>
@@ -47,7 +47,7 @@ const FoodDetails = () => {
             >
               {food_name}
             </a>
-            <div className="flex items-center justify-around gap-2">
+            <div className="flex space-y-2 items-center justify-start gap-6">
               <p
                 href="#"
                 className="inline-block mt-2 text-blue-500 text-2xl hover:text-blue-400"
