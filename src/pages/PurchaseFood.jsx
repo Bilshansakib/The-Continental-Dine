@@ -44,6 +44,8 @@ const PurchaseFood = () => {
     const foodName = food_name;
     const foodOrigin = food_origin;
     const quantityLeft = parseFloat(quantity);
+    const orderCost = 1;
+    const purchase = orderCost + 1;
     if (quantityLeft < 1)
       // return toast.error(`Quantity ${quantity}, Not Available"`);
       return Swal.fire({

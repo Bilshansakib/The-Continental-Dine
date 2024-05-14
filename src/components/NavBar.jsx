@@ -7,14 +7,12 @@ const NavBar = () => {
 
   return (
     <>
-      <div
-        className={`lg:h-22 bg-gradient-to-r from-red-200 to-white navbar shadow-sm container px-4 mx-auto`}
-      >
+      <div className={`lg:h-22 navbar shadow-sm container px-4 mx-auto`}>
         <div className="flex-1">
           <Link to="/" className="flex gap-2 items-center">
             {/* <img className='w-auto h-7' src={} alt='logo' /> */}
-            <span className="drop-shadow-lg p-2 bg-gradient-to-r from-white to-red-800 font-bold text-3xl text-white">
-              <span className="px-2 bg-gradient-to-r font-rob from-yellow-400 to-white-500">
+            <span className="drop-shadow-lg p-2  font-bold text-3xl text-white">
+              <span className="px-2 bg-gradient-to-r font-rob from-red-400 to-white-500">
                 The Continental
               </span>
             </span>

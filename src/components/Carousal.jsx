@@ -80,7 +80,7 @@ const Carousal = () => {
               service in a sophisticated and lively setting.
             </p>
           </div>
-          <div>
+          <div className="animate-bounce">
             <Link to="all-foods">
               <Button data-swiper-parallax="-50" variant="contained">
                 Explore More..
@@ -117,7 +117,7 @@ const Carousal = () => {
               only offer delicious meals prepared by top chefs...
             </p>
           </div>
-          <div>
+          <div className="animate-bounce">
             <Link to="all-foods ">
               <Button data-swiper-parallax="-50" variant="outlined">
                 Explore More..
@@ -141,7 +141,7 @@ const Carousal = () => {
               <li>• etc...</li>
             </ul>
           </div>
-          <div>
+          <div className="animate-bounce">
             <Link to="all-foods">
               <Button data-swiper-parallax="-50" variant="contained">
                 Explore More..
@@ -157,7 +157,7 @@ const Carousal = () => {
             Best Chef's In The World
           </div>
           <img className="h-[420]" src={swiper2} alt="" />
-          <div>
+          <div className="animate-bounce">
             <Link to="all-foods">
               <Button data-swiper-parallax="-50" variant="outlined">
                 Explore More..
