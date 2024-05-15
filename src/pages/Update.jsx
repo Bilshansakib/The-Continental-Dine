@@ -89,7 +89,7 @@ const Update = () => {
         >
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
-              <h2 className="mb-4 text-4xl font-semibold">All Food Items</h2>
+              <h2 className="mb-4 text-4xl font-semibold">All Food Item</h2>
               <h4 className="mb-6 text-xl font-semibold">Subheading</h4>
               <Link to="/">
                 <button

@@ -45,7 +45,7 @@ const PurchaseFood = () => {
     const foodOrigin = food_origin;
     const quantityLeft = parseFloat(quantity);
     const orderCost = 1;
-    const purchase = orderCost + 1;
+    const purchase = orderCost + quantityLeft;
     if (quantityLeft < 1)
       // return toast.error(`Quantity ${quantity}, Not Available"`);
       return Swal.fire({
@@ -67,6 +67,7 @@ const PurchaseFood = () => {
       foodName,
       FoodDescription,
       foodOrigin,
+      purchase,
 
       // buyerName,
       // buyer_email: user?.email,
@@ -124,9 +125,11 @@ const PurchaseFood = () => {
           </p>
         </div>
       </div> */}
-      <RecipeReviewCard food={food}></RecipeReviewCard>
+      <div className="mt-6">
+        <RecipeReviewCard food={food}></RecipeReviewCard>
+      </div>
       {/* Place A Bid Form */}
-      <section className="p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]">
+      <section className="p-6 w-full mt-6 bg-white rounded-b-md shadow-md flex-1 md:min-h-[350px]">
         <h2 className="text-lg font-semibold text-gray-700 capitalize ">
           Place A Order
         </h2>

@@ -52,3 +52,13 @@
   background-image: url("/src/assets/Image/image1.jpg");
   height: 300px;
 }
+.addedPhoto {
+  background-image: url("/src/assets/Image/logo4.jpg");
+  height: 300px;
+}
+.carousal {
+  background-image: url("/src/assets/Image/swiper1.jpg");
+}
+.postFoodItem {
+  background-image: url("/src/assets/Image/swiper3.jpg");
+}

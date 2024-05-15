@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import SocialMediaLogin from "../../components/SocialMediaLogin";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -25,16 +26,28 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        // toast.success("Signup Successful");
         if (user) {
           Swal.fire({
-            position: "top-end",
+            position: "top-center",
             icon: "success",
             title: "Welcome To Our Restaurant",
             showConfirmButton: false,
             timer: 1500,
           });
         }
+        // toast.success("Signup Successful");
+        if (user) {
+          const loggedEmail = { email: user.email };
+          axios
+            .post(`${import.meta.env.VITE_API_URL}/jwt`, loggedEmail, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              console.log(res.data);
+              toast.success("LogIn Successful");
+            });
+        }
+
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -52,7 +65,7 @@ const Register = () => {
         <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-semibold text-gray-100 lg:text-4xl">
-              Brand
+              The Continental Dine
             </h2>
 
             <h3 className="mt-2 text-2xl font-semibold text-gray-100">
@@ -60,9 +73,12 @@ const Register = () => {
             </h3>
 
             <p className="mt-4 text-gray-100">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam,
-              eum modi incidunt adipisci quod porro et non exercitationem quasi,
-              maxime culpa ut nemo ab delectus saepe iste nostrum explicabo a?
+              We are a well-known restaurant brand that is dedicated to
+              providing our customers with exceptional food experiences. We not
+              only offer delicious meals prepared by top chefs, but we also
+              combine a rich cultural and sensory experience. Our goal is to
+              surpass customers' expectations with a dining experience that goes
+              beyond just food.
             </p>
           </div>
 

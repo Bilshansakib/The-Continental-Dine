@@ -29,26 +29,6 @@ const TopFoodsCard = ({ food }) => {
     //   </div>
     // </div>
     <Link className="w-full   h-[420px] max-w-sm  px-4 py-3 bg-white rounded-md shadow-md ">
-      {/* <div className=" flex items-center justify-between">
-        <span className="text-xs font-light text-gray-800 ">
-          
-        </span>
-        <span className="px-3 py-1 text-[8px] text-blue-800 uppercase bg-blue-200 rounded-full ">
-          {food_category}
-        </span>
-      </div>
-
-      <div>
-        <h1 className="mt-2 text-lg font-semibold text-gray-800 ">
-          {food_name}
-        </h1>
-
-        <p title={description} className="mt-2 text-sm text-gray-600 ">
-          {description.substring(0, 70)}...
-        </p>
-        <p className="mt-2 text-sm font-bold text-gray-600 ">Range: ${price}</p>
-        <p className="mt-2 text-sm font-bold text-gray-600 ">Bid Count:</p>
-      </div> */}
       <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
         <img
           className="hover:scale-[1.15] transition-all w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"

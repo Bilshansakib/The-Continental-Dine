@@ -10,7 +10,6 @@ const AllFoods = () => {
   const { user } = useAuth();
   const [allFoods, setAllFoods] = useState([]);
   const [search, setSearch] = useState("");
-  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     getFoodItems();

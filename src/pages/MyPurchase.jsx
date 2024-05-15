@@ -5,6 +5,8 @@ import axios from "axios";
 import EditNoteTwoToneIcon from "@mui/icons-material/EditNoteTwoTone";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { Button } from "@mui/material";
+import Swal from "sweetalert2";
 
 const MyPurchase = () => {
   const { user } = useAuth();
@@ -16,12 +18,40 @@ const MyPurchase = () => {
 
   const getFoodItems = async () => {
     const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/my-purchase/${user?.email}`
+      `${import.meta.env.VITE_API_URL}/my-purchase/${user?.email}`,
+      { withCredentials: true }
     );
 
     setPurchase(data);
   };
-  console.log(purchase);
+
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `${import.meta.env.VITE_API_URL}/food/${id}`
+      );
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          getFoodItems();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className=" mx-auto container">
       <Helmet>
@@ -29,10 +59,10 @@ const MyPurchase = () => {
       </Helmet>
       <div>
         <div
-          style={{
-            "background-image": "url(/src/assets/Image/logo4.jpg)",
-          }}
-          className={`container h-[300px] mx-auto bg-center relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center`}
+          // style={{
+          //   "background-image": "url(src/assets/Image/logo4.jpg)",
+          // }}
+          className={`container addedPhoto h-[300px] mx-auto bg-center relative overflow-hidden rounded-b-lg bg-cover bg-no-repeat p-12 text-center`}
         >
           <div
             className="absolute bgStyle bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
@@ -40,8 +70,10 @@ const MyPurchase = () => {
           >
             <div className="flex h-full items-center justify-center">
               <div className="text-white">
-                <h2 className="mb-4 text-4xl font-semibold">All Food Items</h2>
-                <h4 className="mb-6 text-xl font-semibold">Subheading</h4>
+                <h2 className="mb-4 text-4xl font-semibold">My Purchase</h2>
+                <h4 className="mb-6 text-xl font-semibold">
+                  Purchase Your Food
+                </h4>
                 <Link to="/">
                   <button
                     type="button"
@@ -49,7 +81,7 @@ const MyPurchase = () => {
                     data-twe-ripple-init
                     data-twe-ripple-color="light"
                   >
-                    Call to action
+                    Call to actions
                   </button>
                 </Link>
               </div>
@@ -59,7 +91,7 @@ const MyPurchase = () => {
       </div>
       {purchase.map((p, index) => (
         <div key={p._id} className="bg-gray-100 dark:text-gray-900">
-          <div className=" py-4 grid grid-cols-12 mx-auto dark:bg-gray-50">
+          <div className=" py-4 grid mt-2 grid-cols-12 mx-auto dark:bg-gray-50">
             <div
               className="bg-no-repeat relative ml-20 rounded-full bg-cover dark:bg-gray-300 col-span-full lg:col-span-4"
               style={{
@@ -68,11 +100,37 @@ const MyPurchase = () => {
                 backgroundImage: `url('${p.foodImage}')`,
               }}
             >
-              <Link to={`/update/${p._id}`}>
-                <span className="absolute bottom-1 bg-orange-300 p-2 rounded-full">
-                  <EditNoteTwoToneIcon></EditNoteTwoToneIcon> update
+              <span>
+                <Link to={`/update/${p._id}`}>
+                  {/* <button className="absolute bottom-1 bg-orange-300 p-2 rounded-full">
+                    
+                  </button> */}
+                  <span className="absolute bottom-1 rounded-full">
+                    <Button variant="contained">
+                      <EditNoteTwoToneIcon></EditNoteTwoToneIcon> updates
+                    </Button>
+                  </span>
+                </Link>
+              </span>
+              <Button onClick={() => handleDelete(p._id)} variant="outlined">
+                <span className="flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-5 h-5 mr-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+                  <span>Delete</span>
                 </span>
-              </Link>
+              </Button>
             </div>
             <div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
               <div className="flex justify-start">
@@ -80,14 +138,14 @@ const MyPurchase = () => {
                   Item No. {index + 1}
                 </span>
               </div>
-              <h1 className="text-3xl font-semibold">{p.foodName}</h1>
-              <p className="flex-1 pt-2">{p.foodDescription}</p>
+              <h1 className="text-3xl font-semibold mt-2">{p.foodName}</h1>
+              <p className="flex-1 ">{p.foodDescription}</p>
               <a
                 rel="noopener noreferrer"
                 href="#"
                 className="inline-flex items-center pt-2 pb-6 space-x-2 text-sm dark:text-violet-600"
               >
-                <span>{p.price}</span>
+                <span>Price : {p.price}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -117,7 +175,7 @@ const MyPurchase = () => {
                   </svg>
                   <span className="self-center text-sm">by {p.email}</span>
                 </div>
-                <span className="text-xs">{p.foodOrigin}</span>
+                <span className="text-sm">Origin: {p.foodOrigin}</span>
               </div>
             </div>
           </div>

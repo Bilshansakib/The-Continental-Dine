@@ -32,19 +32,13 @@ const Carousal = () => {
       >
         <div
           slot="container-start"
-          className="parallax-bg "
-          style={{
-            "background-image": "url(/src/assets/Image/swiper1.jpg)",
-          }}
+          className="parallax-bg carousal"
+          // style={{
+          //   "background-image": "url(../assets/Image/swiper1.jpg)",
+          // }}
           data-swiper-parallax="-23%"
         ></div>
-        {/* <img
-          slot="container-start"
-          className="parallax-bg"
-          src={swiper1}
-          data-swiper-parallax="-23%"
-          alt=""
-        /> */}
+
         <SwiperSlide className="space-y-4">
           <div className="text-6xl" data-swiper-parallax="-300">
             The Continental Food

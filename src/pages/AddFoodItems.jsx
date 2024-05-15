@@ -66,7 +66,7 @@ const AddFoodItems = () => {
         style={{
           "background-image": "url(/src/assets/Image/swiper3.jpg)",
         }}
-        className="flex container mx-auto p-6 font-fir justify-center items-center min-h-[calc(100vh-306px)] my-12"
+        className="flex postFoodItem rounded-md container mx-auto p-6 font-fir justify-center items-center min-h-[calc(100vh-306px)] my-12"
       >
         <section className=" p-2 md:p-6 mx-auto bg-white opacity-80 rounded-md shadow-md ">
           <h2 className="text-lg font-semibold text-gray-700 capitalize ">

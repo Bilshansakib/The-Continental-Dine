@@ -1,12 +1,12 @@
 const Footer = () => {
   return (
-    <footer className="container mx-auto bg-white shadow-sm font-rob">
+    <footer className="container mx-auto mt-10 rounded-t-xl bg-gray-300 shadow-sm font-rob">
       <hr />
       <div className=" px-6 py-8 ">
         <div className="flex flex-col items-center text-center">
           <div className="flex gap-2 items-center">
             {/* <img className="w-auto h-7" src="" alt="" /> */}
-            <span>The Continental Dine</span>
+            <span className="text-3xl">The Continental Dine</span>
           </div>
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
