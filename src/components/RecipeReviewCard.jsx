@@ -46,6 +46,7 @@ export default function RecipeReviewCard({ food }) {
     food_category,
     quantity,
     bid_count,
+    purchase_count,
   } = food || {};
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -93,7 +94,7 @@ export default function RecipeReviewCard({ food }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Quantity left:</Typography>
-          <Typography paragraph>{quantity}</Typography>
+          <Typography paragraph>{quantity - purchase_count}</Typography>
         </CardContent>
       </Collapse>
     </Card>

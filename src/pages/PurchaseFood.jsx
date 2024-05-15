@@ -30,21 +30,22 @@ const PurchaseFood = () => {
   } = food || {};
   const currentDate = new Date().toLocaleDateString();
   const handleFormSubmit = async (e) => {
-    // if (user?.email === buyer_email)
+    // if (user?.email === buyer.email)
+    //   return toast.error(`Quantity ${quantity}, Not Available"`);
     e.preventDefault();
     const form = e.target;
     // const price = parseFloat(form.price.value);
     const price = form.price.value;
-    // const buyerName = form.buyerName.value;
-    // const buyer = user?.displayName;
+    const buyerName = form.buyerName.value;
+    const buyer = user?.displayName;
     const email = user?.email;
     const foodId = _id;
     const foodImage = food_image;
     const FoodDescription = description;
     const foodName = food_name;
     const foodOrigin = food_origin;
-    const quantityLeft = parseFloat(quantity);
-    const orderCost = 1;
+    const quantityLeft = parseFloat(quantity - order_count);
+    const orderCost = quantityLeft - 1;
     const purchase = orderCost + quantityLeft;
     if (quantityLeft < 1)
       // return toast.error(`Quantity ${quantity}, Not Available"`);
@@ -62,7 +63,7 @@ const PurchaseFood = () => {
       email,
       currentDate,
       foodId,
-      // buyer,
+      buyer,
       quantityLeft,
       foodName,
       FoodDescription,
@@ -194,7 +195,7 @@ const PurchaseFood = () => {
           <div className=" mt-6">
             <Button
               type="submit"
-              className={` px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600`}
+              className={`  px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600`}
               variant="contained"
               color="success"
             >

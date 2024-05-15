@@ -3,6 +3,8 @@ import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi2";
 import { BsFillReplyAllFill } from "react-icons/bs";
+import { AiFillPicture } from "react-icons/ai";
+
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -15,7 +17,7 @@ const NavBar = () => {
           {/* <img className='w-auto h-7' src={} alt='logo' /> */}
           <span className="drop-shadow-lg p-2 text-sky-900 font-bold text-3xl">
             <span className="px-2 bg-gradient-to-r font-rob">
-              The Continental
+              The Continental Dine
             </span>
           </span>
         </Link>
@@ -24,7 +26,7 @@ const NavBar = () => {
         <ul className="menu menu-horizontal text-sky-900 font-bold">
           <li>
             <Link to="/">
-              <HiHome></HiHome>Home
+              <HiHome></HiHome> Home
             </Link>
           </li>
           <li>
@@ -33,7 +35,9 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/gallery">Gallery</Link>
+            <Link to="/gallery">
+              <AiFillPicture></AiFillPicture> Gallery
+            </Link>
           </li>
 
           {!user && (

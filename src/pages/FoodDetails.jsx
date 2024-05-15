@@ -24,7 +24,9 @@ const FoodDetails = () => {
         <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
           view Food details:
         </h1>
-
+        <li>item purchased already : {purchase_count}</li>
+        <li>serial number : updating...</li>
+        <li>order code : updating...</li>
         <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
           <img
             className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
@@ -47,6 +49,12 @@ const FoodDetails = () => {
               className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white"
             >
               {food_name}
+            </a>
+            <a
+              href="#"
+              className="block mt-4 text-xl font-semibold text-gray-800 hover:underline dark:text-white"
+            >
+              Item left: {quantity - purchase_count}
             </a>
             <div className="flex space-y-2 items-center justify-start gap-6">
               <p

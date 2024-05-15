@@ -8,18 +8,15 @@ experience that goes beyond just food.
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-  "@types/react"
-  "@types/react-dom"
-  "@vitejs/plugin-react"
-  "autoprefixer"
-  "daisyui"
-  "eslint"
-  "eslint-plugin-react"
-  "eslint-plugin-react-hooks"
-  "eslint-plugin-react-refresh"
-  "postcss"
-  "tailwindcss"
-  "vite"
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh Fast Refresh
+- "@vitejs/plugin-react"
+- ""@types/react""
+- "tailwindcss"
+- "@types/react-dom"
+- "autoprefixer"
+- "eslint-plugin-react"
+- "eslint-plugin-react-hooks"
+- "eslint-plugin-react-refresh"
+- "daisyui"
+- "eslint""
+- "vite"

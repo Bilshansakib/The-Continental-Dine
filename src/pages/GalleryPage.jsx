@@ -27,6 +27,9 @@ const GalleryPage = () => {
   console.log(allFoods);
   return (
     <div className="mx-auto container ">
+      <Helmet>
+        <title>Continental Dine | Gallery </title>
+      </Helmet>
       <div
         className={`container mx-auto bg-center relative photo1 overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center`}
         //   style="background-image: url('/src/assets/Image/image1.jpg')"
